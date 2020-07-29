@@ -109,6 +109,10 @@ fi
 if [[ "${SSH_ENABLE_ROOT}" == "true" ]]; then
     echo ">> Unlocking root account"
     usermod -p '' root
+    if [[ "${SSH_ENABLE_PASSWORD_AUTH}" == "true" ]]; then
+        echo 'set /files/etc/ssh/sshd_config/PermitRootLogin yes' | augtool -s 1> /dev/null
+        echo 'root:password' | chpasswd
+    fi
 else
     echo "INFO: root account is now locked by default. Set SSH_ENABLE_ROOT to unlock the account."
 fi
@@ -175,8 +179,6 @@ for f in /etc/entrypoint.d/*; do
         ${f}
     fi
 done
-
-echo "root:password" | chpasswd
 
 stop() {
     echo "Received SIGINT or SIGTERM. Shutting down $DAEMON"
