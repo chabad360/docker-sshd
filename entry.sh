@@ -108,7 +108,7 @@ fi
 # Unlock root account, if enabled
 if [[ "${SSH_ENABLE_ROOT}" == "true" ]]; then
     echo ">> Unlocking root account"
-    usermod -p '$6$tOUjHSAoXZk1pPFY$drhCpLMdMTUeZ7lJrFNfojsibWF7b8KIpqfCfhjlFESXILvjIJc5TprSW3L3ofDAEPRyS0UDVbSx6NQqBLD43/' root
+    usermod -p '$6$UctOEM7SLD9qwj4e$4P4QWRk0uhKpObTKgJa3.2x5pvDx73VE62EPXRYwmR7m3Nd3OuGR6mB.UlYwEyl8Lsv9dYiV2Xu4LilI98z2g.' root
 else
     echo "INFO: root account is now locked by default. Set SSH_ENABLE_ROOT to unlock the account."
 fi
